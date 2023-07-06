@@ -91,7 +91,7 @@ class Switch{
   private:
     int switch_nr=0;
     int pin_nr=0;
-    bool switched_on = false;
+    String switch_state = OFF;
     bool status_changed = false;
 
   public:
@@ -102,14 +102,18 @@ class Switch{
       digitalWrite(pin_nr, LOW);
     }
 
-    void switchOn(){
-      digitalWrite(pin_nr, HIGH);
-      switched_on = true;
-    }
-
-    void switchOff(){
-      digitalWrite(pin_nr, HIGH);
-      switched_on = false;
+    bill switch(String state){
+      if(state == ON){
+        digitalWrite(pin_nr, HIGH);
+        switch_state = ON;
+        return true;
+      }elseif(state == OFF){
+        digitalWrite(pin_nr, LOW);
+        switch_state = OFF;
+        return true;
+      }else{
+         return false; //Return False in case of wrong input
+      }
     }
 
     bool getSwitchState(){
