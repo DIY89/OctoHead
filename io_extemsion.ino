@@ -21,6 +21,7 @@ const byte interruptPin = 2;
 #define RELAIS3_PIN 16
 #define RELAIS4_PIN 17
 
+
 void alarm(){
   Serial.println("ALARM");
   // Shutdown Printer on Fire Alarm
@@ -87,6 +88,9 @@ class Sensor : public DHT{
     }
 };
 
+class Input(){
+
+
 class Switch{
   private:
     int switch_nr=0;
@@ -120,7 +124,7 @@ class Switch{
       return switched_on;
     }
     
-}
+};
 
 /********************************( Definieren der Objekte )********************************/                          
 //RELAIS relais;
