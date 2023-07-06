@@ -87,17 +87,40 @@ class Sensor : public DHT{
     }
 };
 
-typedef struct{
-  int relais_nr=0;
-  bool switched_on = false;
-  bool status_changed = false;
-}RELAIS[4];
+class Switch{
+  private:
+    int switch_nr=0;
+    int pin_nr=0;
+    bool switched_on = false;
+    bool status_changed = false;
+
+  public:
+    Switch(int switch_num, int pin_num){ // Constructor
+      switch_nr = switch_num;
+      pin_nr = pin_num;
+      pinMode(pin_nr, OUTPUT);
+      digitalWrite(pin_nr, LOW);
+    }
+
+    void switchOn(){
+      digitalWrite(pin_nr, HIGH);
+      switched_on = true;
+    }
+
+    void switchOff(){
+      digitalWrite(pin_nr, HIGH);
+      switched_on = false;
+    }
+
+    bool getSwitchState(){
+      return switched_on;
+    }
+    
+}
 
 /********************************( Definieren der Objekte )********************************/                          
 //RELAIS relais;
 
-static bool dht_data_request=false;
-static bool relais_state;
 String received_msg;
 
 void setup() {
