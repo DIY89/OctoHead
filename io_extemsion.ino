@@ -107,7 +107,7 @@ class Switch{
         digitalWrite(pin_nr, HIGH);
         switch_state = ON;
         return true;
-      }elseif(state == OFF){
+      }else if(state == OFF){
         digitalWrite(pin_nr, LOW);
         switch_state = OFF;
         return true;
