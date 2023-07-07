@@ -121,7 +121,7 @@ class Switch{
     }
 
     bool getSwitchState(){
-      return switched_on;
+      return switch_state;
     }
     
 };
