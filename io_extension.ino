@@ -9,7 +9,6 @@ const byte interruptPin = 2;
 #define ON "ON"
 #define OFF "OFF"
 
-#define DHT_TYPE DHT22     // Hier wird definiert was für ein Sensor ausgelesen wird. 
 #define DHT1_PIN 3          // Hier die Pin Nummer eintragen wo der Sensor angeschlossen ist
 #define DHT2_PIN 4
 #define DHT3_PIN 5
@@ -33,9 +32,11 @@ class Sensor : public DHT{
     int sensor_nr;
     int pin_nr;
     int sensor_type;
+    String sensor_location;
+    bool sensor_state = false;
     float temperatur;
     float humidity;
-    bool dht_data_request = false;
+    bool data_request = false;
     
   public:
     Sensor(int nr,int dht_pin, int type) : DHT(dht_pin,type){
@@ -45,7 +46,7 @@ class Sensor : public DHT{
       //begin();
     }
     
-    bool check_sensor_data(){
+    bool check_dht_sensor_data(){
       /*********************( Überprüfen ob alles richtig Ausgelesen wurde )*********************/ 
       //Serial.println("Sensor Data Check");
       //Serial.println(dht.temperatur);
@@ -60,7 +61,7 @@ class Sensor : public DHT{
     }
   
     void send_sensor_data_uart(){
-      if(Sensor::check_sensor_data()){
+      if(Sensor::check_dht_sensor_data()){
         // Senden der gemessenen Werte an den PI 
         Serial.println(sensor_nr);                  // Ausgeben der Sensor Nr
         //Serial.print('\n');
@@ -87,8 +88,6 @@ class Sensor : public DHT{
       }
     }
 };
-
-class Input(){
 
 
 class Switch{
