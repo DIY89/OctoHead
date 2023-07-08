@@ -105,7 +105,7 @@ class Switch{
       digitalWrite(pin_nr, LOW);
     }
 
-    bill switch(String state){
+    bool switch(String state){
       if(state == ON){
         digitalWrite(pin_nr, HIGH);
         switch_state = ON;
