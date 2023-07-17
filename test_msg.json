@@ -1,0 +1,44 @@
+// Command from PI --> Arduino
+
+//Example for sensor data request of DHT22
+{
+  "id": 1,                          // Message Number (must be increase for each message; Respone contains same number
+  "command": "r",                   // command: r=read; w=write
+  "device_type": "dht",             // device_type: "dht": for DHT Sensor data; "switch": for relais; "sensor": for sensor status
+  "device_name": "Filement_Box",    // device_name: name of the device
+  "data": []                        // empty if sensor data is requested; state ON/OFF for switches
+}
+
+// Answer from Arduino --> PI
+
+//Example for sensor data request of DHT22
+{
+  "id": 1,                          // Message Number (must be increase for each message; Respone contains same number
+  "command": "r",                   // command: r=read; w=write
+  "device_type": "dht",             // device_type: "dht": for DHT Sensor data; "switch": for relais; "sensor": for sensor status
+  "device_name": "Filement_Box",    // device_name: name of the device
+  "data": ["temperature": 15, "humidity":50]                        // empty if sensor data is requested; state ON/OFF for switches
+}
+
+// Command from PI --> Arduino
+
+//Example for sensor data request of DHT22
+{
+  "id": 1,                            // Message Number (must be increase for each message; Respone contains same number
+  "command": "r",                     // command: r=read; w=write
+  "device_type": "switch",            // device_type: "dht": for DHT Sensor data; "switch": for relais; "sensor": for sensor status
+  "device_name": "Fan_Filement_Box",  // device_name: name of the device
+  "data": ["state": "ON"]             // empty if sensor data is requested; state ON/OFF for switches
+}
+
+// Answer from Arduino --> PI
+
+//Example for sensor data request of DHT22
+{
+  "id": 1,                            // Message Number (must be increase for each message; Respone contains same number
+  "command": "w",                     // command: r=read; w=write
+  "device_type": "switch",            // device_type: "dht": for DHT Sensor data; "switch": for relais; "sensor": for sensor status
+  "device_name": "Fan",               // device_name: name of the device
+  "device_name": "Fan_Filement_Box",  // device_name: name of the device
+  "data": ["state": "ON"]             // empty if sensor data is requested; state ON/OFF for switches
+}
