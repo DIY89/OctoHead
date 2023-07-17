@@ -1,0 +1,5 @@
+# Compile
+sudo ../arduino-cli compile -b arduino:avr:uno
+
+#Upload
+sudo ../arduino-cli upload -b arduino:avr:uno -p /dev/ttyACM0
